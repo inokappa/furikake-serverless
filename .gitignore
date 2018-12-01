@@ -1,0 +1,7 @@
+.envrc
+.python-version
+.bundle/
+vendor/
+template.yaml
+packaged-template.yaml
+event.json

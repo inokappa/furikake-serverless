@@ -1,0 +1,29 @@
+{
+  "resources": {
+    "aws": [
+      "alb",
+      "clb",
+      "directory_service",
+      "ec2",
+      "elasticsearch_service",
+      "kinesis",
+      "lambda",
+      "rds",
+      "security_group",
+      "vpc",
+      "vpc_endpoint"
+    ]
+  },
+  "backlog": {
+    "projects": [
+      {
+        "space_id": "example",
+        "top_level_domain": "jp",
+        "wiki_id": "1234567",
+        "wiki_name": "Lambda 送信テスト",
+        "header": "# Test Header\n[toc]\n## Sub Header\n",
+        "footer": "## Test Footer\n### Sub Footer"
+      }
+    ]
+  }
+}
