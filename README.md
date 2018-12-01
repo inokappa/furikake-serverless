@@ -12,6 +12,8 @@
 * KMS の Key ID
 * Backlog API キー
 
+direnv も利用出来るとより良い.
+
 ## セットアップ
 
 ### sam で利用する S3 バケットを作成する
