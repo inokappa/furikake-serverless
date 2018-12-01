@@ -95,6 +95,10 @@ make package _BUCKET_NAME=your-sam-s3-bucket
 make deploy
 ```
 
+## tips
+
+* あとで書く
+
 ## todo
 
 * 色々
