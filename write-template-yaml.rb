@@ -6,6 +6,13 @@ puts 'KMS の Key ID を入力してください: '
 kms_key_id = gets.chop
 puts 'API キーを入力してください: '
 api_key = gets.chop
+puts '実行間隔を分で入力してください (デフォルト 60 分): '
+rate_min = gets.chop
+puts 'タイムゾーンを入力してください (デフォルト Asia/Tokyo): '
+timezone = gets.chop
+
+rate_min = 60 if rate_min == ''
+timezone = 'Asia/Tokyo' if timezone == ''
 
 kms = Aws::KMS::Client.new
 res = kms.encrypt(
@@ -34,11 +41,12 @@ Resources:
       Environment:
         Variables:
           ENCRYPTED_BACKLOG_API_KEY: #{encrypted_backlog_api_key}
+          TZ: #{timezone}
       Events:
         FurikakeSchedule:
           Type: Schedule
           Properties:
-            Schedule: rate(60 minutes)
+            Schedule: rate(#{rate_min} minutes)
             Input: '#{input_json}'
 
 Outputs:
