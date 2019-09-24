@@ -12,13 +12,16 @@ invoke: ## ローカルで関数を実行する
 
 package: ## 依存パッケージをアップロードする (_BUCKET_NAME= でバケット名を指定する)
 	@cd src && \
-         bundle install --path vendor/bundle && \
-         cd .. && \
-         sam package --template-file template.yaml \
-		             --output-template-file packaged-template.yaml \
-					 --s3-bucket ${_BUCKET_NAME}
+      bundle install --path vendor/bundle && \
+        cd .. && \
+          sam package --template-file template.yaml \
+		        --output-template-file packaged-template.yaml \
+				 	  --s3-bucket ${_BUCKET_NAME}
 
 deploy: ## Lambda 関数をデプロイする
-	@sam deploy --template-file packaged-template.yaml \
-	            --stack-name FurikakeServerless \
-				--capabilities CAPABILITY_IAM
+	@cd src && \
+	    rm -rf vendor && \
+        cd .. && \
+	        sam deploy --template-file packaged-template.yaml \
+	          --stack-name FurikakeServerless \
+				    --capabilities CAPABILITY_IAM

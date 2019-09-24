@@ -34,6 +34,8 @@ Resources:
       Handler: lambda.run
       Runtime: ruby2.5
       Timeout: 900
+      Layers:
+        - !Ref FurikakeServerlessLayer
       Policies:
         - ReadOnlyAccess
         - KMSDecryptPolicy:
@@ -48,6 +50,15 @@ Resources:
           Properties:
             Schedule: rate(#{rate_min} minutes)
             Input: '#{input_json}'
+  FurikakeServerlessLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: FurikakeServerlessLayer
+      Description: FurikakeServerless for Lambda Layer
+      ContentUri: src/vendor/bundle
+      RetentionPolicy: Retain
+      CompatibleRuntimes:
+        - ruby2.5
 
 Outputs:
   FurikakeServerless:
