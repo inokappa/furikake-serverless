@@ -19,9 +19,6 @@ package: ## 依存パッケージをアップロードする (_BUCKET_NAME= で�
 		  --s3-bucket ${_BUCKET_NAME}
 
 deploy: ## Lambda 関数をデプロイする
-	@cd src && \
-		rm -rf vendor && \
-		cd .. && \
-		sam deploy --template-file packaged-template.yaml \
+	@sam deploy --template-file packaged-template.yaml \
 		  --stack-name FurikakeServerless \
 		  --capabilities CAPABILITY_IAM
