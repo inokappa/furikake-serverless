@@ -12,7 +12,7 @@ invoke: ## ローカルで関数を実行する
 
 package: ## 依存パッケージをアップロードする (_BUCKET_NAME= でバケット名を指定する)
 	@cd src && \
-         bundle update && \
+         bundle install --path vendor/bundle && \
          cd .. && \
          sam package --template-file template.yaml \
 		             --output-template-file packaged-template.yaml \
